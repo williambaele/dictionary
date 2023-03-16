@@ -1,7 +1,9 @@
 let form = document.querySelector('#form');
-let search = "amaze";
+let search = "chicken";
 let input = document.querySelector('#search');
 getDefinition(search);
+const sound = document.querySelector("#sound");
+
 
 /* Search function */
 function getDefinition(search) {
@@ -9,7 +11,6 @@ function getDefinition(search) {
   let request = new XMLHttpRequest();
   request.open('GET', url);
   request.responseType = 'json';
-  const sound = document.getElementById("sound");
   request.send();
   request.onload = function() {
     if (request.readyState === XMLHttpRequest.DONE){
@@ -19,6 +20,12 @@ function getDefinition(search) {
         let type = answer[0].meanings[0].partOfSpeech;
         let word = answer[0].word;
         let phonetic = answer[0].phonetic;
+        let soundSource = answer[0].phonetics[0].audio;
+        if(soundSource != null){
+          let soundSource = answer[0].phonetics[0].audio;
+        } else {
+          document.querySelector('#soundicon').classList.add('invisible');
+        }
         console.log('API connected');
         console.log(answer[0].meanings[0].partOfSpeech);
         console.log(answer[0].meanings[0].definitions[0].definition);
@@ -26,8 +33,8 @@ function getDefinition(search) {
         document.querySelector("#type").innerText = type;
         document.querySelector("#word").innerText = word;
         document.querySelector("#phonetic").innerText = phonetic;
-
-        }
+        sound.src = soundSource;
+      }
       else {
         console.log('API not working');
       }
