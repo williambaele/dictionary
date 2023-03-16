@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dictionary</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -17,6 +18,7 @@
         <input type="text" class="outline-0	col-span-3 bg-transparent border-b-4 border-[#715DF2] text-white pb-2 pl-1" id="search" placeholder="Let's be less stupid">
         <button class="col-span-1 bg-[#715DF2] hover:bg-[#7f6df3] px-4 py-2 text-white font-medium rounded">Search</button>
       </form>
+      <p class="text-sm font-medium text-red-500 invisible" id="error">Ooops! Your research is not valid.</p>
       <div class="w-full flex flex-col pt-3">
         <div class="flex justify-between">
           <h1 class="text-3xl font-medium text-gray-300 mb-2" id="word"></h1>

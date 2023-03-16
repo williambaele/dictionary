@@ -37,6 +37,8 @@ function getDefinition(search) {
       }
       else {
         console.log('API not working');
+        document.querySelector("#search").classList.add('border-red-500', 'border-1');
+        document.querySelector("#error").classList.remove('invisible');
       }
     }
   }
