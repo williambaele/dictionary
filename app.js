@@ -1,5 +1,5 @@
 let form = document.querySelector('#form');
-let search = "procrastination";
+let search = "amaze";
 let input = document.querySelector('#search');
 getDefinition(search);
 
@@ -9,6 +9,7 @@ function getDefinition(search) {
   let request = new XMLHttpRequest();
   request.open('GET', url);
   request.responseType = 'json';
+  const sound = document.getElementById("sound");
   request.send();
   request.onload = function() {
     if (request.readyState === XMLHttpRequest.DONE){
@@ -17,7 +18,7 @@ function getDefinition(search) {
         let definition = answer[0].meanings[0].definitions[0].definition;
         let type = answer[0].meanings[0].partOfSpeech;
         let word = answer[0].word;
-        let phonetic = answer[0].phonetic
+        let phonetic = answer[0].phonetic;
         console.log('API connected');
         console.log(answer[0].meanings[0].partOfSpeech);
         console.log(answer[0].meanings[0].definitions[0].definition);
@@ -25,7 +26,6 @@ function getDefinition(search) {
         document.querySelector("#type").innerText = type;
         document.querySelector("#word").innerText = word;
         document.querySelector("#phonetic").innerText = phonetic;
-
 
         }
       else {
@@ -35,6 +35,10 @@ function getDefinition(search) {
   }
 }
 
+
+function playSound() {
+  sound.play();
+}
 
 
 /* Form handling */
